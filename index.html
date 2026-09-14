@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta
+        name="description"
+        content="ClipZone — Watch funny clips, crazy moments and unforgettable laughs."
+    >
+
+    <title>ClipZone | Watch. Laugh. Repeat.</title>
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #0b0b0f;
+            color: white;
+        }
+
+        /* =========================
+           NAVIGATION
+        ========================= */
+
+        nav {
+            height: 70px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 7%;
+            background: #111118;
+            border-bottom: 1px solid #22222c;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo {
+            text-decoration: none;
+            color: white;
+            font-size: 24px;
+            font-weight: 900;
+            letter-spacing: 1px;
+        }
+
+        .logo span {
+            color: #ff1744;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 25px;
+        }
+
+        .nav-links a {
+            color: #ddd;
+            text-decoration: none;
+            font-size: 15px;
+            transition: 0.2s;
+        }
+
+        .nav-links a:hover {
+            color: #ff1744;
+        }
+
+        /* =========================
+           HERO
+        ========================= */
+
+        .hero {
+            min-height: 82vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 60px 20px;
+            background:
+                radial-gradient(
+                    circle at center,
+                    #24101a 0%,
+                    #0b0b0f 55%
+                );
+        }
+
+        .hero-content {
+            max-width: 800px;
+        }
+
+        .hero h1 {
+            font-size: clamp(45px, 9vw, 85px);
+            line-height: 1;
+            margin-bottom: 25px;
+        }
+
+        .hero h1 span {
+            color: #ff1744;
+        }
+
+        .hero p {
+            color: #bdbdc7;
+            font-size: 18px;
+            line-height: 1.6;
+            margin-bottom: 35px;
+        }
+
+        .watch-btn {
+            display: inline-block;
+            padding: 15px 30px;
+            background: #ff1744;
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 8px;
+            transition: 0.25s;
+        }
+
+        .watch-btn:hover {
+            transform: translateY(-3px);
+            opacity: 0.9;
+        }
+
+        /* =========================
+           CATEGORIES
+        ========================= */
+
+        .categories {
+            padding: 75px 7%;
+            text-align: center;
+        }
+
+        .categories h2,
+        .featured h2 {
+            font-size: 32px;
+            margin-bottom: 35px;
+        }
+
+        .category-grid {
+            display: grid;
+            grid-template-columns:
+                repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
+        }
+
+        .category {
+            padding: 25px 15px;
+            background: #15151d;
+            border: 1px solid #252530;
+            border-radius: 10px;
+            font-size: 17px;
+            transition: 0.25s;
+        }
+
+        .category:hover {
+            transform: translateY(-5px);
+            border-color: #ff1744;
+        }
+
+        /* =========================
+           FEATURED CLIPS
+        ========================= */
+
+        .featured {
+            padding: 30px 7% 80px;
+            text-align: center;
+        }
+
+        .clip-grid {
+            display: grid;
+            grid-template-columns:
+                repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+        }
+
+        .clip-card {
+            background: #15151d;
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid #252530;
+            text-align: left;
+            transition: 0.25s;
+        }
+
+        .clip-card:hover {
+            transform: translateY(-5px);
+            border-color: #ff1744;
+        }
+
+        .clip-thumbnail {
+            height: 180px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #20202a;
+            font-size: 45px;
+        }
+
+        .clip-card h3 {
+            padding: 15px 15px 5px;
+            font-size: 17px;
+        }
+
+        .clip-card p {
+            padding: 0 15px 18px;
+            color: #9999a5;
+            font-size: 14px;
+        }
+
+        /* =========================
+           CALL TO ACTION
+        ========================= */
+
+        .cta {
+            padding: 80px 20px;
+            text-align: center;
+            background: #111118;
+        }
+
+        .cta h2 {
+            font-size: 35px;
+            margin-bottom: 15px;
+        }
+
+        .cta p {
+            color: #aaa;
+            margin-bottom: 30px;
+        }
+
+        /* =========================
+           FOOTER
+        ========================= */
+
+        footer {
+            padding: 30px 20px;
+            text-align: center;
+            color: #777;
+            font-size: 14px;
+            border-top: 1px solid #22222c;
+        }
+
+        /* =========================
+           MOBILE
+        ========================= */
+
+        @media (max-width: 600px) {
+
+            nav {
+                padding: 0 20px;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .hero {
+                min-height: 75vh;
+            }
+
+            .hero p {
+                font-size: 16px;
+            }
+
+            .clip-thumbnail {
+                height: 150px;
+            }
+
+        }
+
+    </style>
+</head>
+
+
+<body>
+
+    <!-- =========================
+         NAVIGATION
+    ========================= -->
+
+    <nav>
+
+        <!-- CLICKABLE CLIPZONE LOGO -->
+
+        <a
+            href="https://youngprodigy5.github.io/clipzone/"
+            class="logo"
+        >
+            CLIP<span>ZONE</span>
+        </a>
+
+
+        <div class="nav-links">
+
+            <a href="#">Home</a>
+
+            <a href="#categories">
+                Categories
+            </a>
+
+            <a href="#clips">
+                Clips
+            </a>
+
+            <a href="#about">
+                About
+            </a>
+
+        </div>
+
+    </nav>
+
+
+    <!-- =========================
+         HERO SECTION
+    ========================= -->
+
+    <section class="hero">
+
+        <div class="hero-content">
+
+            <h1>
+                Watch.
+                <span>Laugh.</span>
+                Repeat.
+            </h1>
+
+            <p>
+                Discover funny clips, crazy moments,
+                memes and unforgettable laughs —
+                all in one place.
+            </p>
+
+            <a
+                href="#clips"
+                class="watch-btn"
+            >
+                ▶ Watch Clips
+            </a>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         CATEGORIES
+    ========================= -->
+
+    <section
+        class="categories"
+        id="categories"
+    >
+
+        <h2>
+            Explore Categories
+        </h2>
+
+        <div class="category-grid">
+
+            <div class="category">
+                😂 Funny
+            </div>
+
+            <div class="category">
+                🎮 Gaming
+            </div>
+
+            <div class="category">
+                🤣 Memes
+            </div>
+
+            <div class="category">
+                🔥 Crazy Moments
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         FEATURED CLIPS
+    ========================= -->
+
+    <section
+        class="featured"
+        id="clips"
+    >
+
+        <h2>
+            🔥 Featured Clips
+        </h2>
+
+        <div class="clip-grid">
+
+
+            <div class="clip-card">
+
+                <div class="clip-thumbnail">
+                    😂
+                </div>
+
+                <h3>
+                    Funniest Moments
+                </h3>
+
+                <p>
+                    Get ready to laugh.
+                </p>
+
+            </div>
+
+
+            <div class="clip-card">
+
+                <div class="clip-thumbnail">
+                    🎮
+                </div>
+
+                <h3>
+                    Gaming Madness
+                </h3>
+
+                <p>
+                    Crazy gaming moments.
+                </p>
+
+            </div>
+
+
+            <div class="clip-card">
+
+                <div class="clip-thumbnail">
+                    🤣
+                </div>
+
+                <h3>
+                    Meme Zone
+                </h3>
+
+                <p>
+                    Memes you can't ignore.
+                </p>
+
+            </div>
+
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         CALL TO ACTION
+    ========================= -->
+
+    <section
+        class="cta"
+        id="about"
+    >
+
+        <h2>
+            Ready to laugh?
+        </h2>
+
+        <p>
+            Your next favorite clip is waiting.
+        </p>
+
+        <a
+            href="#clips"
+            class="watch-btn"
+        >
+            Start Watching
+        </a>
+
+    </section>
+
+
+    <!-- =========================
+         FOOTER
+    ========================= -->
+
+    <footer>
+
+        © 2026 ClipZone.
+        Watch. Laugh. Repeat.
+
+    </footer>
+
+
+</body>
+
+  </html>
